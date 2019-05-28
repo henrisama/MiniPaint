@@ -1,0 +1,17 @@
+.btnReta{
+    -fx-background-position: 50%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url('../Imagens/reta.png');
+}
+
+.btnRetangulo{
+    -fx-background-position: 50%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url('../Imagens/retangulo.png');
+}
+
+.btnCirculo{
+    -fx-background-position: 50%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url('../Imagens/circulo.png');
+}

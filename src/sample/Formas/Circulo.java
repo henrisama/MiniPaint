@@ -9,14 +9,12 @@ public class Circulo extends Desenhar {
 
     public Circulo(Point pontoInicial, Point pontoFinal){
         setPonto(pontoInicial, pontoFinal);
-        System.out.println(getPontoInicial());
-        System.out.println(getPontoFinal());
-        setRaio((pontoFinal.x - pontoInicial.x)/2);
-        setxCentral(pontoFinal.x - raio);
-        setyCentral(pontoFinal.y - raio);
+        setRaio((getPontoFinal().x - getPontoInicial().x)/2);
+        setxCentral(getPontoFinal().x - raio);
+        setyCentral(getPontoFinal().y - raio);
     }
 
-    double getxCentral() {
+    public double getxCentral() {
         return xCentral;
     }
 
@@ -24,7 +22,7 @@ public class Circulo extends Desenhar {
         this.xCentral = xCentral;
     }
 
-    double getyCentral() {
+    public double getyCentral() {
         return yCentral;
     }
 
@@ -32,7 +30,7 @@ public class Circulo extends Desenhar {
         this.yCentral = yCentral;
     }
 
-    double getRaio() {
+    public double getRaio() {
         return raio;
     }
 

@@ -15,3 +15,11 @@
     -fx-background-repeat: no-repeat;
     -fx-background-image: url('../Imagens/circulo.png');
 }
+
+.btnCores{
+
+}
+
+.btnCores MenuItem{
+    -fx-padding: 5 20;
+}

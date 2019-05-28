@@ -3,10 +3,10 @@ package sample.Formas;
 import java.awt.*;
 
 abstract class Desenhar {
-    private Point pontoInicial;
-    private Point pontoFinal;
+    private Point pontoInicial = null;
+    private Point pontoFinal = null;
 
-    Point getPontoInicial() {
+    public Point getPontoInicial() {
         return pontoInicial;
     }
 
@@ -15,7 +15,7 @@ abstract class Desenhar {
     }
 
 
-    Point getPontoFinal() {
+    public Point getPontoFinal() {
         return pontoFinal;
     }
 
@@ -26,14 +26,24 @@ abstract class Desenhar {
 
     void setPonto(Point pontoInicial, Point pontoFinal){
         if(pontoInicial.x > pontoFinal.x && pontoInicial.y > pontoFinal.y){
-            System.out.println(pontoInicial);
-            System.out.println(pontoFinal);
             setPontoInicial(pontoFinal.getLocation());
             setPontoFinal(pontoInicial.getLocation());
         }
         else if(pontoInicial.x < pontoFinal.x && pontoInicial.y < pontoFinal.y){
             setPontoInicial(pontoInicial.getLocation());
             setPontoFinal(pontoFinal.getLocation());
+        }
+        else{
+            Point ponto1 = new Point((int)pontoInicial.getX(), (int) pontoFinal.getY());
+            Point ponto2 = new Point((int)pontoFinal.getX(), (int) pontoInicial.getY());
+            if(pontoInicial.x < pontoFinal.x && pontoInicial.y > pontoFinal.y){
+                setPontoInicial(ponto1.getLocation());
+                setPontoFinal(ponto2.getLocation());
+            }
+            else if(pontoInicial.x > pontoFinal.x && pontoInicial.y < pontoFinal.y){
+                setPontoInicial(ponto2.getLocation());
+                setPontoFinal(ponto1.getLocation());
+            }
         }
     }
 }

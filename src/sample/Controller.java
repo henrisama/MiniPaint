@@ -49,6 +49,11 @@ public class Controller{
         desenhaAnchorPane();
     }
 
+    public void novaJanela() throws Exception{
+        Stage stage = new Stage();
+        new Main().start(stage);
+    }
+
     public void abrirImagem(){
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();

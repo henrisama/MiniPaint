@@ -42,7 +42,7 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="75.0" style="-fx-background-color: #D8D8D8;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#livreSelecionado" prefHeight="50.0" prefWidth="75.0" text="Livre" />
+            <Button mnemonicParsing="false" onAction="#livreSelecionado" prefHeight="50.0" prefWidth="75.0" styleClass="btnLivre" stylesheets="@style.css" />
             <Button mnemonicParsing="false" onAction="#retaSelecionado" prefHeight="50.0" prefWidth="75.0" styleClass="btnReta" stylesheets="@style.css" />
             <Button mnemonicParsing="false" onAction="#retanguloSelecionado" prefHeight="50.0" prefWidth="75.0" styleClass="btnRetangulo" stylesheets="@style.css" />
             <Button mnemonicParsing="false" onAction="#circuloSelecionado" prefHeight="50.0" prefWidth="75.0" styleClass="btnCirculo" stylesheets="@style.css" />

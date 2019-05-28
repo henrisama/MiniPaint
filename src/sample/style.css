@@ -1,3 +1,9 @@
+.btnLivre{
+    -fx-background-position: 50%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url('../Imagens/livre.png');
+}
+
 .btnReta{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;

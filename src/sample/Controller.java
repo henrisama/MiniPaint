@@ -75,12 +75,12 @@ public class Controller{
         }
     }
 
-    public void limparAnchorPane(){
-        drawPane.getChildren().clear();
+    public void fecharMiniPaint(){
+        System.exit(0);
     }
 
-    public void fecharMiniPaint(){
-        System.exit(1);
+    public void limparAnchorPane(){
+        drawPane.getChildren().clear();
     }
 
     private void desenhaAnchorPane(){

@@ -1,4 +1,4 @@
-package TesteJFrame;
+package Teste;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -7,10 +7,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class Projeto extends Application {

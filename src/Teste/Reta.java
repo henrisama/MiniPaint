@@ -1,4 +1,4 @@
-package TesteJFrame;
+package Teste;
 
 public class Reta extends Draw {
 

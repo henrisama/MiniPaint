@@ -1,4 +1,4 @@
-package TesteJFrame;
+package Teste;
 
 public class Retangulo extends Draw {
     private double width = 0;

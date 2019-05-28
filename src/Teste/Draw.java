@@ -1,4 +1,4 @@
-package TesteJFrame;
+package Teste;
 
 import java.awt.*;
 

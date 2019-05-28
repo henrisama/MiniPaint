@@ -6,6 +6,8 @@ import javafx.geometry.Insets;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -81,6 +83,14 @@ public class Controller{
 
     public void limparAnchorPane(){
         drawPane.getChildren().clear();
+    }
+
+    public void testandoKey(KeyEvent event){
+        KeyCode keyCode = KeyCode.A;
+        //System.out.println(event.toString());
+        if(event.getCode() == keyCode && event.isControlDown()){
+            System.out.println("funciona");
+        }
     }
 
     private void desenhaAnchorPane(){

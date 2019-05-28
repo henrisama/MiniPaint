@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#testandoKey" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#metodoDesfazer" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -48,20 +48,32 @@
             <Button mnemonicParsing="false" onAction="#retanguloSelecionado" prefHeight="50.0" prefWidth="75.0" styleClass="btnRetangulo" stylesheets="@style.css" />
             <Button mnemonicParsing="false" onAction="#circuloSelecionado" prefHeight="50.0" prefWidth="75.0" styleClass="btnCirculo" stylesheets="@style.css" />
             <Button mnemonicParsing="false" onAction="#textoSelecionado" prefHeight="50.0" prefWidth="75.0" text="Texto" />
-             <MenuButton contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" styleClass="btnCores" stylesheets="@style.css" text="Cores" textAlignment="CENTER">
+             <MenuButton contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" styleClass="btnCores" stylesheets="@style.css" text="Cor 1" textAlignment="CENTER">
                  <items>
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: black; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: red; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: green; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: blue; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: gray; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: pink; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" style="-fx-background-color: purple; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
                  </items>
                  <opaqueInsets>
                      <Insets />
                  </opaqueInsets>
+             </MenuButton>
+             <MenuButton mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Cor 2">
+                 <items>
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
+                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
+                 </items>
              </MenuButton>
          </children>
       </VBox>

@@ -15,6 +15,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Formas.Circulo;
@@ -23,14 +24,20 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Controller{
     @FXML
     AnchorPane drawPane;
+
     private int formaGeometrica = 0;
     private Point pontoInicial = new Point(0,0);
     private Point pontoFinal = new Point(0,0);
     private int aux = 0;
+    private Color cor1 = Color.BLACK;
+    private Color cor2 = Color.TRANSPARENT;
+    private ArrayList<Shape> shapes = new ArrayList<Shape>();
+    private ArrayList<Shape> shapesRefazer = new ArrayList<Shape>();
 
     public void onPressed(MouseEvent event){
         pontoInicial.x = (int) event.getX();
@@ -83,14 +90,33 @@ public class Controller{
 
     public void limparAnchorPane(){
         drawPane.getChildren().clear();
+        shapes.clear();
+        shapesRefazer.clear();
     }
 
-    public void testandoKey(KeyEvent event){
-        KeyCode keyCode = KeyCode.A;
-        //System.out.println(event.toString());
-        if(event.getCode() == keyCode && event.isControlDown()){
-            System.out.println("funciona");
+    public void metodoDesfazer(KeyEvent event) {
+        KeyCode keyCodeZ = KeyCode.Z;
+        if(event.getCode() == keyCodeZ && event.isControlDown() && event.isShiftDown() && !shapesRefazer.isEmpty()){
+            shapes.add(shapesRefazer.get(shapesRefazer.size() - 1));
+            shapesRefazer.remove(shapesRefazer.size() - 1);
+            addDesenho();
         }
+        else if (event.getCode() == keyCodeZ && event.isControlDown() && !shapes.isEmpty()) {
+            shapesRefazer.add(shapes.get(shapes.size()-1));
+            shapes.remove(shapes.size() - 1);
+            addDesenho();
+        }
+    }
+
+    private void addDesenho(){
+        drawPane.getChildren().clear();
+        drawPane.getChildren().addAll(shapes);
+    }
+
+    private Shape initShape(Shape shape){
+        shape.setStroke(cor1);
+        shape.setFill(cor2);
+        return shape;
     }
 
     private void desenhaAnchorPane(){
@@ -98,22 +124,15 @@ public class Controller{
             case 0:
                 break;
             case 1:
-                Line line = new Line(pontoInicial.x, pontoInicial.y, pontoFinal.x, pontoFinal.y);
-                drawPane.getChildren().addAll(line);
+                shapes.add(initShape(new Line(pontoInicial.x, pontoInicial.y, pontoFinal.x, pontoFinal.y)));
                 break;
             case 2:
                 Retangulo retangulo = new Retangulo(pontoInicial, pontoFinal);
-                Rectangle rectangle = new Rectangle(retangulo.getPontoInicial().x,retangulo.getPontoInicial().y,retangulo.getWidth(), retangulo.getHeigth());
-                rectangle.setStroke(Color.BLACK);
-                rectangle.setFill(Color.TRANSPARENT);
-                drawPane.getChildren().addAll(rectangle);
+                shapes.add(initShape(new Rectangle(retangulo.getPontoInicial().x,retangulo.getPontoInicial().y,retangulo.getWidth(), retangulo.getHeigth())));
                 break;
             case 3:
                 Circulo circulo = new Circulo(pontoInicial, pontoFinal);
-                Circle circle = new Circle(circulo.getxCentral(), circulo.getyCentral(), circulo.getRaio());
-                circle.setStroke(Color.BLACK);
-                circle.setFill(Color.TRANSPARENT);
-                drawPane.getChildren().addAll(circle);
+                shapes.add(initShape(new Circle(circulo.getxCentral(), circulo.getyCentral(), circulo.getRaio())));
                 break;
             case 4:
                 break;
@@ -125,6 +144,57 @@ public class Controller{
                 System.out.println("Forma nao selecionada");
                 break;
         }
+        addDesenho();
+    }
+
+    public void setCor1_Yellow(){
+        cor1 = Color.YELLOW;
+    }
+    public void setCor1_Black(){
+        cor1 = Color.BLACK;
+    }
+    public void setCor1_RED(){
+        cor1 = Color.RED;
+    }
+    public void setCor1_Green(){
+        cor1 = Color.GREEN;
+    }
+    public void setCor1_Blue(){
+        cor1 = Color.BLUE;
+    }
+    public void setCor1_Gray(){
+        cor1 = Color.GRAY;
+    }
+    public void setCor1_Pink(){
+        cor1 = Color.PINK;
+    }
+    public void setCor1_Purple(){
+        cor1 = Color.PURPLE;
+    }
+
+    public void setCor2_Yellow(){
+        cor2 = Color.YELLOW;
+    }
+    public void setCor2_Black(){
+        cor2 = Color.BLACK;
+    }
+    public void setCor2_RED(){
+        cor2 = Color.RED;
+    }
+    public void setCor2_Green(){
+        cor2 = Color.GREEN;
+    }
+    public void setCor2_Blue(){
+        cor2 = Color.BLUE;
+    }
+    public void setCor2_Gray(){
+        cor2 = Color.GRAY;
+    }
+    public void setCor2_Pink(){
+        cor2 = Color.PINK;
+    }
+    public void setCor2_Purple(){
+        cor2 = Color.PURPLE;
     }
 
     public void livreSelecionado(){

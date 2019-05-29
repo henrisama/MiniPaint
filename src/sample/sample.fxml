@@ -7,10 +7,13 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
@@ -39,29 +42,84 @@
       </MenuBar>
    </top>
    <bottom>
-      <Pane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: Black;" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: #848484;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="200.0">
+               <children>
+                  <MenuButton mnemonicParsing="false" prefHeight="33.0" stylesheets="@style.css" text="Cor 1" textFill="WHITE">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
+                      </items>
+                     <graphic>
+                        <Pane fx:id="imgColor1" prefHeight="10.0" prefWidth="10.0" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="btnColor1" />
+                        <String fx:value="btnAll" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton mnemonicParsing="false" prefHeight="33.0" stylesheets="@style.css" text="Cor 2" textFill="WHITE">
+                      <items>
+                        <MenuItem mnemonicParsing="false" onAction="#setCor2_na" style="-fx-padding: 5 10;" text="n/a" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
+                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
+                      </items>
+                     <graphic>
+                        <Pane fx:id="imgColor2" prefHeight="10.0" prefWidth="10.0" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="btnColor2" />
+                        <String fx:value="btnAll" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <TextField fx:id="textFieldPane" alignment="CENTER" layoutX="636.0" layoutY="1.0" prefHeight="30.0" promptText="Digite o texto aqui" visible="false">
+               <padding>
+                  <Insets bottom="2.0" top="2.0" />
+               </padding></TextField>
+         </children></Pane>
    </bottom>
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="75.0" style="-fx-background-color: #D8D8D8;" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#selectedDrawing" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
-                  <String fx:value="btnLivre" />
+                  <String fx:value="btnDrawing" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
             <Button mnemonicParsing="false" onAction="#straightSelected" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
-                  <String fx:value="btnReta" />
+                  <String fx:value="btnStraight" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
             <Button mnemonicParsing="false" onAction="#selectedRectangle" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
-                  <String fx:value="btnRetangulo" />
+                  <String fx:value="btnRectangle" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
             <Button mnemonicParsing="false" onAction="#selectedCircle" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
-                  <String fx:value="btnCirculo" />
+                  <String fx:value="btnCircle" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
             <Button mnemonicParsing="false" onAction="#selectedText" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
@@ -69,42 +127,6 @@
                   <String fx:value="btnText" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-             <MenuButton contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css" text="Cor 1" textAlignment="CENTER">
-                 <items>
-                  <MenuItem mnemonicParsing="false" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor1_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
-                 </items>
-                 <opaqueInsets>
-                     <Insets />
-                 </opaqueInsets>
-               <styleClass>
-                  <String fx:value="btnColor1" />
-                  <String fx:value="btnAll" />
-               </styleClass>
-             </MenuButton>
-             <MenuButton mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css" text="Cor 2">
-                 <items>
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
-                     <MenuItem mnemonicParsing="false" onAction="#setCor2_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
-                 </items>
-               <styleClass>
-                  <String fx:value="btnColor2" />
-                  <String fx:value="btnAll" />
-               </styleClass>
-             </MenuButton>
          </children>
       </VBox>
    </left>

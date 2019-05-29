@@ -1,25 +1,25 @@
-.btnLivre{
+.btnDrawing{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/livre.png');
+    -fx-background-image: url('../Imagens/drawing.png');
 }
 
-.btnReta{
+.btnStraight{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/reta.png');
+    -fx-background-image: url('../Imagens/straight.png');
 }
 
-.btnRetangulo{
+.btnRectangle{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/retangulo.png');
+    -fx-background-image: url('../Imagens/rectangle.png');
 }
 
-.btnCirculo{
+.btnCircle{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/circulo.png');
+    -fx-background-image: url('../Imagens/circle.png');
 }
 
 .btnText{

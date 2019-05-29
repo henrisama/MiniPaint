@@ -2,14 +2,14 @@ package sample.Formas;
 
 import java.awt.*;
 
-public class Retangulo extends Desenhar{
+public class Rectangle extends Draw {
     private double width;
     private double heigth;
 
-    public Retangulo(Point pontoInicial, Point pontoFinal){
+    public Rectangle(Point pontoInicial, Point pontoFinal){
         setPonto(pontoInicial, pontoFinal);
-        setWidth(getPontoFinal().x - getPontoInicial().x);
-        setHeigth(getPontoFinal().y - getPontoInicial().y);
+        setWidth(getFinalPoint().x - getInitPoint().x);
+        setHeigth(getFinalPoint().y - getInitPoint().y);
     }
 
     public double getWidth() {

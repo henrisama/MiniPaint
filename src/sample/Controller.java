@@ -30,40 +30,42 @@ public class Controller{
     @FXML
     AnchorPane drawPane;
 
-    private int formaGeometrica = 0;
-    private Point pontoInicial = new Point(0,0);
-    private Point pontoFinal = new Point(0,0);
+    private int geometricForm = 0;
     private int aux = 0;
+    private Point initPoint = new Point(0,0);
+    private Point finalPoint = new Point(0,0);
     private Color cor1 = Color.BLACK;
     private Color cor2 = Color.TRANSPARENT;
     private ArrayList<Shape> shapes = new ArrayList<Shape>();
-    private ArrayList<Shape> shapesRefazer = new ArrayList<Shape>();
+    private ArrayList<Shape> shapesRebuild = new ArrayList<Shape>();
 
+    ///////////////////////////////////////////////////////////////// MOUSE EVENT
     public void onPressed(MouseEvent event){
-        pontoInicial.x = (int) event.getX();
-        pontoInicial.y = (int) event.getY();
-        if(pontoInicial.x < 0 || pontoInicial.y < 0){
-            aux = formaGeometrica;
-            formaGeometrica = 5;
+        initPoint.x = (int) event.getX();
+        initPoint.y = (int) event.getY();
+        if(initPoint.x < 0 || initPoint.y < 0){
+            aux = geometricForm;
+            geometricForm = 5;
         }
     }
 
     public void onReleased(MouseEvent event){
-        pontoFinal.x = (int) event.getX();
-        pontoFinal.y = (int) event.getY();
-        if(pontoFinal.x < 0 || pontoFinal.y < 0){
-            aux = formaGeometrica;
-            formaGeometrica = 5;
+        finalPoint.x = (int) event.getX();
+        finalPoint.y = (int) event.getY();
+        if(finalPoint.x < 0 || finalPoint.y < 0){
+            aux = geometricForm;
+            geometricForm = 5;
         }
-        desenhaAnchorPane();
+        drawDrawPane();
     }
 
-    public void novaJanela() throws Exception{
+    ///////////////////////////////////////////////////////////////// VBOX - ARQUIVO
+    public void newWindow() throws Exception{
         Stage stage = new Stage();
         new Main().start(stage);
     }
 
-    public void abrirImagem(){
+    public void openImage(){
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(stage);
@@ -74,7 +76,7 @@ public class Controller{
         }
     }
 
-    public void salvarImagem() throws IOException {
+    public void saveImage() throws IOException {
         WritableImage image = drawPane.snapshot(new SnapshotParameters(), null);
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
@@ -84,31 +86,33 @@ public class Controller{
         }
     }
 
-    public void fecharMiniPaint(){
+    public void closeMiniPaint(){
         System.exit(0);
     }
 
-    public void limparAnchorPane(){
+    ///////////////////////////////////////////////////////////////// VBOX - EIDTAR
+    public void clearDrawPane(){
         drawPane.getChildren().clear();
         shapes.clear();
-        shapesRefazer.clear();
+        shapesRebuild.clear();
     }
 
-    public void metodoDesfazer(KeyEvent event) {
-        KeyCode keyCodeZ = KeyCode.Z;
-        if(event.getCode() == keyCodeZ && event.isControlDown() && event.isShiftDown() && !shapesRefazer.isEmpty()){
-            shapes.add(shapesRefazer.get(shapesRefazer.size() - 1));
-            shapesRefazer.remove(shapesRefazer.size() - 1);
-            addDesenho();
+    ///////////////////////////////////////////////////////////////// KEYBOARD EVENT
+    public void keyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.Z && event.isControlDown() && event.isShiftDown() && !shapesRebuild.isEmpty()){
+            shapes.add(shapesRebuild.get(shapesRebuild.size() - 1));
+            shapesRebuild.remove(shapesRebuild.size() - 1);
+            addDraw();
         }
-        else if (event.getCode() == keyCodeZ && event.isControlDown() && !shapes.isEmpty()) {
-            shapesRefazer.add(shapes.get(shapes.size()-1));
+        else if (event.getCode() == KeyCode.Z && event.isControlDown() && !shapes.isEmpty()) {
+            shapesRebuild.add(shapes.get(shapes.size()-1));
             shapes.remove(shapes.size() - 1);
-            addDesenho();
+            addDraw();
         }
     }
 
-    private void addDesenho(){
+    ///////////////////////////////////////////////////////////////// DRAW IN DRAW PANE
+    private void addDraw(){
         drawPane.getChildren().clear();
         drawPane.getChildren().addAll(shapes);
     }
@@ -119,34 +123,35 @@ public class Controller{
         return shape;
     }
 
-    private void desenhaAnchorPane(){
-        switch (formaGeometrica){
+    private void drawDrawPane(){
+        switch (geometricForm){
             case 0:
                 break;
             case 1:
-                shapes.add(initShape(new Line(pontoInicial.x, pontoInicial.y, pontoFinal.x, pontoFinal.y)));
+                shapes.add(initShape(new Line(initPoint.x, initPoint.y, finalPoint.x, finalPoint.y)));
                 break;
             case 2:
-                Retangulo retangulo = new Retangulo(pontoInicial, pontoFinal);
+                Retangulo retangulo = new Retangulo(initPoint, finalPoint);
                 shapes.add(initShape(new Rectangle(retangulo.getPontoInicial().x,retangulo.getPontoInicial().y,retangulo.getWidth(), retangulo.getHeigth())));
                 break;
             case 3:
-                Circulo circulo = new Circulo(pontoInicial, pontoFinal);
+                Circulo circulo = new Circulo(initPoint, finalPoint);
                 shapes.add(initShape(new Circle(circulo.getxCentral(), circulo.getyCentral(), circulo.getRaio())));
                 break;
             case 4:
                 break;
             case 5:
                 System.out.println("Fora da Area");
-                formaGeometrica = aux;
+                geometricForm = aux;
                 break;
             default:
                 System.out.println("Forma nao selecionada");
                 break;
         }
-        addDesenho();
+        addDraw();
     }
 
+    ///////////////////////////////////////////////////////////////// SET VARIABLES
     public void setCor1_Yellow(){
         cor1 = Color.YELLOW;
     }
@@ -197,18 +202,23 @@ public class Controller{
         cor2 = Color.PURPLE;
     }
 
-    public void livreSelecionado(){
-        formaGeometrica = 0;
+    public void selectedDrawing(){
+        geometricForm = 0;
     }
 
-    public void retaSelecionado(){
-        formaGeometrica = 1;
+    public void straightSelected(){
+        geometricForm = 1;
     }
 
-    public void retanguloSelecionado(){ formaGeometrica = 2; }
+    public void selectedRectangle(){
+        geometricForm = 2;
+    }
 
-    public void circuloSelecionado(){ formaGeometrica = 3; }
+    public void selectedCircle(){
+        geometricForm = 3;
+    }
 
-    public void textoSelecionado(){formaGeometrica = 4; }
-
+    public void selectedText(){
+        geometricForm = 4;
+    }
 }

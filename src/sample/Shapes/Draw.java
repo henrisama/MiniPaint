@@ -1,4 +1,4 @@
-package sample.Formas;
+package sample.Shapes;
 
 import java.awt.*;
 

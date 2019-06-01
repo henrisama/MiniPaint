@@ -1,31 +1,22 @@
 package sample;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import sample.Shapes.Circle2D;
-import sample.Shapes.Rectangle;
-import javax.imageio.ImageIO;
+import sample.Shapes.Rectangle2D;
+
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import MenuBar.*;
 
@@ -133,8 +124,8 @@ public class Controller{
                 shapes.add(initShape(new Line(initPoint.x, initPoint.y, finalPoint.x, finalPoint.y)));
                 break;
             case 2:
-                Rectangle rectangle = new Rectangle(initPoint, finalPoint);
-                shapes.add(initShape(new javafx.scene.shape.Rectangle(rectangle.getInitPoint().x,rectangle.getInitPoint().y,rectangle.getWidth(), rectangle.getHeigth())));
+                Rectangle2D rectangle2D = new Rectangle2D(initPoint, finalPoint);
+                shapes.add(initShape(new javafx.scene.shape.Rectangle(rectangle2D.getInitPoint().x, rectangle2D.getInitPoint().y, rectangle2D.getWidth(), rectangle2D.getHeigth())));
                 break;
             case 3:
                 Circle2D circle2D = new Circle2D(initPoint, finalPoint);

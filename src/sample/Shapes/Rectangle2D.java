@@ -2,11 +2,11 @@ package sample.Shapes;
 
 import java.awt.*;
 
-public class Rectangle extends Draw {
+public class Rectangle2D extends Draw {
     private double width;
     private double heigth;
 
-    public Rectangle(Point pontoInicial, Point pontoFinal){
+    public Rectangle2D(Point pontoInicial, Point pontoFinal){
         setPonto(pontoInicial, pontoFinal);
         setWidth(getFinalPoint().x - getInitPoint().x);
         setHeigth(getFinalPoint().y - getInitPoint().y);

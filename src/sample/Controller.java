@@ -15,23 +15,19 @@ import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import sample.Shapes.Circle2D;
 import sample.Shapes.Rectangle2D;
-
-import java.awt.*;
 import java.util.ArrayList;
+import java.awt.*;
 import MenuBar.*;
 
 public class Controller{
-    FileMenuBar fileMenuBar = new FileMenuBar();
-    EditMenuBar editMenuBar = new EditMenuBar();
+    private FileMenuBar fileMenuBar = new FileMenuBar();
+    private EditMenuBar editMenuBar = new EditMenuBar();
     @FXML
     AnchorPane drawPane;
-
     @FXML
     Pane imgColor1;
-
     @FXML
     Pane imgColor2;
-
     @FXML
     TextField textFieldPane;
 
@@ -69,25 +65,27 @@ public class Controller{
     ///////////////////////////////////////////////////////////////// VBOX - ARQUIVO
     @FXML
     private void eventFileMenuBar(Event event){
-        if(event.toString().contains("fileNewWindow")){
+        if(event.toString().contains("id=fileNewWindow")){
             fileMenuBar.newWindow();
         }
-        else if(event.toString().contains("fileOpenImage")){
+        else if(event.toString().contains("id=fileOpenImage")){
             fileMenuBar.openImage(drawPane);
         }
-        else if(event.toString().contains("fileSaveImage")){
+        else if(event.toString().contains("id=fileSaveImage")){
             fileMenuBar.saveImage(drawPane);
         }
-        else if(event.toString().contains("fileClose")){
+        else if(event.toString().contains("id=fileClose")){
             fileMenuBar.close();
         }
     }
 
     ///////////////////////////////////////////////////////////////// VBOX - EIDTAR
-    public void clearDrawPane(){
-        drawPane.getChildren().clear();
-        shapes.clear();
-        shapesRebuild.clear();
+
+    @FXML
+    private void eventEditMenuBar(Event event){
+        if(event.toString().contains("id=drawClear")){
+            editMenuBar.drawClear(drawPane,shapes,shapesRebuild);
+        }
     }
 
     ///////////////////////////////////////////////////////////////// KEYBOARD EVENT

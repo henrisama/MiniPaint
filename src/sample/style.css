@@ -1,31 +1,31 @@
 .btnDrawing{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/drawing.png');
+    -fx-background-image: url('../Images/drawing.png');
 }
 
 .btnStraight{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/straight.png');
+    -fx-background-image: url('../Images/straight.png');
 }
 
 .btnRectangle{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/rectangle.png');
+    -fx-background-image: url('../Images/rectangle.png');
 }
 
 .btnCircle{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/circle.png');
+    -fx-background-image: url('../Images/circle.png');
 }
 
 .btnText{
     -fx-background-position: 50%;
     -fx-background-repeat: no-repeat;
-    -fx-background-image: url('../Imagens/text.png');
+    -fx-background-image: url('../Images/text.png');
 }
 
 .btnColor1{

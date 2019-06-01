@@ -21,10 +21,10 @@
         <menus>
           <Menu mnemonicParsing="false" text="Arquivo">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#newWindow" text="Novo" />
-                  <MenuItem mnemonicParsing="false" onAction="#openImage" text="Abrir" />
-                  <MenuItem mnemonicParsing="false" onAction="#saveImage" text="Salvar" />
-                  <MenuItem mnemonicParsing="false" onAction="#closeMiniPaint" text="Fechar" />
+              <MenuItem fx:id="fileNewWindow" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Novo" />
+                  <MenuItem fx:id="fileOpenImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Abrir" />
+                  <MenuItem fx:id="fileSaveImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Salvar" />
+                  <MenuItem fx:id="fileClose" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Fechar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Editar">

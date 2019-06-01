@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.SnapshotParameters;
@@ -26,8 +27,11 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import MenuBar.*;
 
 public class Controller{
+    FileMenuBar fileMenuBar = new FileMenuBar();
+    EditMenuBar editMenuBar = new EditMenuBar();
     @FXML
     AnchorPane drawPane;
 
@@ -72,34 +76,20 @@ public class Controller{
     }
 
     ///////////////////////////////////////////////////////////////// VBOX - ARQUIVO
-    public void newWindow() throws Exception{
-        Stage stage = new Stage();
-        new Main().start(stage);
-    }
-
-    public void openImage(){
-        Stage stage = new Stage();
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(stage);
-        if(file != null){
-            if(file.getName().endsWith(".jpeg") || file.getName().endsWith(".jpg") || file.getName().endsWith(".png")){
-                drawPane.setBackground(new Background(new BackgroundFill(new ImagePattern(new Image(file.toURI().toString())), CornerRadii.EMPTY, Insets.EMPTY)));
-            }
+    @FXML
+    private void eventFileMenuBar(Event event){
+        if(event.toString().contains("fileNewWindow")){
+            fileMenuBar.newWindow();
         }
-    }
-
-    public void saveImage() throws IOException {
-        WritableImage image = drawPane.snapshot(new SnapshotParameters(), null);
-        Stage stage = new Stage();
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showSaveDialog(stage);
-        if(file != null){
-            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        else if(event.toString().contains("fileOpenImage")){
+            fileMenuBar.openImage(drawPane);
         }
-    }
-
-    public void closeMiniPaint(){
-        System.exit(0);
+        else if(event.toString().contains("fileSaveImage")){
+            fileMenuBar.saveImage(drawPane);
+        }
+        else if(event.toString().contains("fileClose")){
+            fileMenuBar.close();
+        }
     }
 
     ///////////////////////////////////////////////////////////////// VBOX - EIDTAR

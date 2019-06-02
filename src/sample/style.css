@@ -34,8 +34,13 @@
 .btnColor2{
 }
 
+.btnEraser{
+}
+
 .btnAll{
     -fx-background-color: transparent;
+    -fx-pref-width: 75;
+    -fx-pref-height: 50;
 }
 
 .btnAll:hover{

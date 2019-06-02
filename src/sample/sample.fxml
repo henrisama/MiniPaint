@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -122,15 +123,22 @@
                   <String fx:value="btnCircle" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#selectedText" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
+            <Button mnemonicParsing="false" onAction="#selectedText" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="btnText" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
+            <Button mnemonicParsing="false" onAction="#teste2" styleClass="btnAll" stylesheets="@style.css" text="Button" />
          </children>
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="drawPane" onMousePressed="#onPressed" onMouseReleased="#onReleased" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="drawPane" onMouseDragged="#teste" onMousePressed="#onPressed" onMouseReleased="#onReleased" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></AnchorPane>
    </center>
 </BorderPane>

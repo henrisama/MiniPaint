@@ -3,7 +3,9 @@ package sample;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -39,6 +41,8 @@ public class Controller{
     //vai ficar aqui mesmo??
     private ArrayList<Shape> shapes = new ArrayList<Shape>();
     private ArrayList<Shape> shapesRebuild = new ArrayList<Shape>();
+    int x = 0;
+    int y = 0;
 
 
 
@@ -59,7 +63,28 @@ public class Controller{
             aux = geometricForm;
             geometricForm = 5;
         }
+        x = y = 0;
         drawDrawPane();
+    }
+
+    public void teste(MouseEvent event){
+        if(event.getX() > 0 && event.getY() > 0 && geometricForm == 0) {
+            if (x == 0 && y == 0) {
+                x = (int) event.getX();
+                y = (int) event.getY();
+            } else {
+                shapes.add(new Line(x, y, event.getX(), event.getY()));
+                addDraw();
+            }
+            x = (int) event.getX();
+            y = (int) event.getY();
+        }
+        else if(event.getX() > 0 && event.getY() > 0 && geometricForm == 6){
+            Circle circle = new Circle(event.getX() - 11, event.getY() - 11, 10);
+            circle.setFill(Color.WHITE);
+            shapes.add(circle);
+            addDraw();
+        }
     }
 
     ///////////////////////////////////////////////////////////////// VBOX - ARQUIVO
@@ -136,6 +161,8 @@ public class Controller{
             case 5:
                 System.out.println("Fora da Area");
                 geometricForm = aux;
+                break;
+            case 6:
                 break;
             default:
                 System.out.println("Forma nao selecionada");
@@ -241,5 +268,11 @@ public class Controller{
     public void selectedText(){
         geometricForm = 4;
         textFieldPane.setVisible(true);
+    }
+
+    public void teste2(){
+        geometricForm = 6;
+        Image image = new Image(getClass().getResourceAsStream("/Images/er500px.png"));
+        drawPane.setCursor(new ImageCursor(image, 500, 500));
     }
 }

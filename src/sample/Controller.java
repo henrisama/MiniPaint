@@ -13,11 +13,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
-import sample.Shapes.Circle2D;
-import sample.Shapes.Rectangle2D;
 import java.util.ArrayList;
 import java.awt.*;
 import MenuBar.*;
+import Shapes.*;
 
 public class Controller{
     private FileMenuBar fileMenuBar = new FileMenuBar();
@@ -37,6 +36,7 @@ public class Controller{
     private Point finalPoint = new Point(0,0);
     private Color cor1 = Color.BLACK;
     private Color cor2 = Color.TRANSPARENT;
+    //vai ficar aqui mesmo??
     private ArrayList<Shape> shapes = new ArrayList<Shape>();
     private ArrayList<Shape> shapesRebuild = new ArrayList<Shape>();
 
@@ -115,6 +115,7 @@ public class Controller{
     }
 
     private void drawDrawPane(){
+
         switch (geometricForm){
             case 0:
                 break;

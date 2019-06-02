@@ -1,4 +1,4 @@
-package sample.Shapes;
+package Shapes;
 
 import java.awt.*;
 
@@ -6,10 +6,9 @@ public class Rectangle2D extends Draw {
     private double width;
     private double heigth;
 
-    public Rectangle2D(Point pontoInicial, Point pontoFinal){
-        setPonto(pontoInicial, pontoFinal);
-        setWidth(getFinalPoint().x - getInitPoint().x);
-        setHeigth(getFinalPoint().y - getInitPoint().y);
+    public Rectangle2D(Point initPoint, Point finalPoint){
+        setPoint(initPoint, finalPoint);
+        draw();
     }
 
     public double getWidth() {
@@ -26,5 +25,11 @@ public class Rectangle2D extends Draw {
 
     private void setHeigth(double heigth) {
         this.heigth = heigth;
+    }
+
+    @Override
+    void draw() {
+        setWidth(getFinalPoint().x - getInitPoint().x);
+        setHeigth(getFinalPoint().y - getInitPoint().y);
     }
 }

@@ -1,4 +1,4 @@
-package sample.Shapes;
+package Shapes;
 
 import java.awt.*;
 
@@ -8,15 +8,13 @@ public class Circle2D extends Draw {
     private double yCentral;
 
     public Circle2D(Point initPoint, Point finalPoint){
-        setPonto(initPoint, finalPoint);
-        if(getFinalPoint().x - getInitPoint().x < getFinalPoint().y - getInitPoint().y){
-            setRadius((getFinalPoint().x - getInitPoint().x)/2);
+        if(initPoint != finalPoint){
+            setPoint(initPoint, finalPoint);
+            draw();
         }
-        else {
-            setRadius((getFinalPoint().y - getInitPoint().y)/2);
+        else{
+            System.out.println("errado motherfuck");
         }
-        setxCentral(getInitPoint().x + ((getFinalPoint().x - getInitPoint().x)/2));
-        setyCentral(getInitPoint().y + ((getFinalPoint().y - getInitPoint().y)/2));
     }
 
     public double getxCentral() {
@@ -41,5 +39,17 @@ public class Circle2D extends Draw {
 
     private void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    @Override
+    void draw() {
+        if(getFinalPoint().x - getInitPoint().x < getFinalPoint().y - getInitPoint().y){
+            setRadius((getFinalPoint().x - getInitPoint().x)/2);
+        }
+        else {
+            setRadius((getFinalPoint().y - getInitPoint().y)/2);
+        }
+        setxCentral(getInitPoint().x + ((getFinalPoint().x - getInitPoint().x)/2));
+        setyCentral(getInitPoint().y + ((getFinalPoint().y - getInitPoint().y)/2));
     }
 }

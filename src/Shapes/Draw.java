@@ -1,4 +1,4 @@
-package sample.Shapes;
+package Shapes;
 
 import java.awt.*;
 
@@ -10,21 +10,20 @@ abstract class Draw {
         return initPoint;
     }
 
-    private void setInitPoint(Point initPoint) {
+    protected void setInitPoint(Point initPoint) {
         this.initPoint = initPoint;
     }
-
 
     public Point getFinalPoint() {
         return finalPoint;
     }
 
-    private void setFinalPoint(Point finalPoint) {
+    protected void setFinalPoint(Point finalPoint) {
         this.finalPoint = finalPoint;
     }
 
 
-    void setPonto(Point initPoint, Point finalPoint){
+    void setPoint(Point initPoint, Point finalPoint){
         if(initPoint.x > finalPoint.x && initPoint.y > finalPoint.y){
             setInitPoint(finalPoint.getLocation());
             setFinalPoint(initPoint.getLocation());
@@ -34,16 +33,18 @@ abstract class Draw {
             setFinalPoint(finalPoint.getLocation());
         }
         else{
-            Point ponto1 = new Point((int) initPoint.getX(), (int) finalPoint.getY());
-            Point ponto2 = new Point((int) finalPoint.getX(), (int) initPoint.getY());
+            Point point1 = new Point((int) initPoint.getX(), (int) finalPoint.getY());
+            Point point2 = new Point((int) finalPoint.getX(), (int) initPoint.getY());
             if(initPoint.x < finalPoint.x && initPoint.y > finalPoint.y){
-                setInitPoint(ponto1.getLocation());
-                setFinalPoint(ponto2.getLocation());
+                setInitPoint(point1.getLocation());
+                setFinalPoint(point2.getLocation());
             }
             else if(initPoint.x > finalPoint.x && initPoint.y < finalPoint.y){
-                setInitPoint(ponto2.getLocation());
-                setFinalPoint(ponto1.getLocation());
+                setInitPoint(point2.getLocation());
+                setFinalPoint(point1.getLocation());
             }
         }
     }
+
+    abstract void draw();
 }

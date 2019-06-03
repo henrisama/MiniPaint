@@ -10,7 +10,7 @@ public class Circle2D extends Draw {
     public Circle2D(Point initPoint, Point finalPoint){
         if(initPoint != finalPoint){
             setPoint(initPoint, finalPoint);
-            draw();
+            setVariableToDraw();
         }
         else{
             System.out.println("errado motherfuck");
@@ -42,7 +42,7 @@ public class Circle2D extends Draw {
     }
 
     @Override
-    void draw() {
+    void setVariableToDraw() {
         if(getFinalPoint().x - getInitPoint().x < getFinalPoint().y - getInitPoint().y){
             setRadius((getFinalPoint().x - getInitPoint().x)/2);
         }

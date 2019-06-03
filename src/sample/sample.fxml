@@ -24,6 +24,7 @@
             <items>
               <MenuItem fx:id="fileNewWindow" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Novo" />
                   <MenuItem fx:id="fileOpenImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Abrir" />
+                  <Menu mnemonicParsing="false" text="Arquivos recentes" />
                   <MenuItem fx:id="fileSaveImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Salvar" />
                   <MenuItem fx:id="fileClose" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Fechar" />
             </items>
@@ -138,7 +139,7 @@
             <Insets />
          </opaqueInsets>
          <cursor>
-            <Cursor fx:constant="TEXT" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor></AnchorPane>
    </center>
 </BorderPane>

@@ -8,5 +8,5 @@ public class Line2D extends Draw {
     }
 
     @Override
-    void draw() {}
+    void setVariableToDraw() {}
 }

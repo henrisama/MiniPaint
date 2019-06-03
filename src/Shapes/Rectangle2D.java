@@ -8,7 +8,7 @@ public class Rectangle2D extends Draw {
 
     public Rectangle2D(Point initPoint, Point finalPoint){
         setPoint(initPoint, finalPoint);
-        draw();
+        setVariableToDraw();
     }
 
     public double getWidth() {
@@ -28,7 +28,7 @@ public class Rectangle2D extends Draw {
     }
 
     @Override
-    void draw() {
+    void setVariableToDraw() {
         setWidth(getFinalPoint().x - getInitPoint().x);
         setHeigth(getFinalPoint().y - getInitPoint().y);
     }

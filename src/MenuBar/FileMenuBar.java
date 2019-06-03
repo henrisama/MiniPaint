@@ -13,8 +13,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import sample.Main;
 
 public class FileMenuBar {
@@ -33,10 +32,70 @@ public class FileMenuBar {
             if(file != null){
                 if(file.getName().endsWith(".jpeg") || file.getName().endsWith(".jpg") || file.getName().endsWith(".png")){
                     anchorPane.setBackground(new Background(new BackgroundFill(new ImagePattern(new Image(file.toURI().toString())), CornerRadii.EMPTY, Insets.EMPTY)));
+                    recentFile(file);
                 }
             }
         }catch (Exception e){}
     }
+
+    private void recentFile(File file){
+        if(!isOverflowRecentFile()){
+            saveRecentFile(file);
+        }
+        else{
+            remakeRecentFile(file);
+        }
+    }
+
+    private boolean isOverflowRecentFile(){
+        try {
+            LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(new File("recentFile")));
+            while(lineNumberReader.readLine() != null)
+                ;
+            if(lineNumberReader.getLineNumber() > 4){ return true; }
+        }catch (Exception e){}
+        return false;
+    }
+
+    private void saveRecentFile(File saveFile){
+        try {
+            File recentFile = new File("recentFile");
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(recentFile, true));
+            bufferedWriter.write(saveFile.toURI().toString() + "\n");
+            bufferedWriter.close();
+        }
+        catch (Exception e){}
+    }
+
+    private void remakeRecentFile(File file){
+        try {
+            File recentFile = new File("recentFile");
+
+            //part 1
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(recentFile));
+            String[] paths = new String[5];
+            for(int i = 0; i < 5; i++){
+                paths[i] = bufferedReader.readLine();
+            }
+            bufferedReader.close();
+
+            //part 2
+            Writer clean = new FileWriter(recentFile);
+            clean.write("");
+            clean.close();
+
+            //part 3
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(recentFile, true));
+            for(int i = 0; i < 4; i++){
+                bufferedWriter.write(paths[i+1] + "\n");
+            }
+            bufferedWriter.close();
+
+            //part 4
+            saveRecentFile(file);
+        }catch (Exception e){}
+    }
+
 
     public void saveImage(AnchorPane anchorPane){
         try {

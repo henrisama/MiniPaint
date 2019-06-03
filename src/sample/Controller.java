@@ -3,6 +3,7 @@ package sample;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -23,6 +24,7 @@ import Shapes.*;
 public class Controller{
     private FileMenuBar fileMenuBar = new FileMenuBar();
     private EditMenuBar editMenuBar = new EditMenuBar();
+
     @FXML
     AnchorPane drawPane;
     @FXML
@@ -38,7 +40,6 @@ public class Controller{
     private Point finalPoint = new Point(0,0);
     private Color cor1 = Color.BLACK;
     private Color cor2 = Color.TRANSPARENT;
-    //vai ficar aqui mesmo??
     private ArrayList<Shape> shapes = new ArrayList<Shape>();
     private ArrayList<Shape> shapesRebuild = new ArrayList<Shape>();
     int x = 0;
@@ -237,12 +238,15 @@ public class Controller{
         imgColor2.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
     }
     public void setCor2_Pink(){
-        cor2 = Color.PINK;
-        imgColor2.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY)));
+        setCor2(Color.PINK);
     }
     public void setCor2_Purple(){
-        cor2 = Color.PURPLE;
-        imgColor2.setBackground(new Background(new BackgroundFill(Color.PURPLE, CornerRadii.EMPTY, Insets.EMPTY)));
+        setCor2(Color.PURPLE);
+    }
+
+    private void setCor2(Color color){
+        cor2 = color;
+        imgColor2.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public void selectedDrawing(){
@@ -252,23 +256,29 @@ public class Controller{
 
     public void straightSelected(){
         geometricForm = 1;
-        textFieldPane.setVisible(false);
+        selectForm();
     }
 
     public void selectedRectangle(){
         geometricForm = 2;
-        textFieldPane.setVisible(false);
+        selectForm();
     }
 
     public void selectedCircle(){
         geometricForm = 3;
-        textFieldPane.setVisible(false);
+        selectForm();
     }
 
     public void selectedText(){
         geometricForm = 4;
         textFieldPane.setVisible(true);
     }
+
+    private void selectForm(){
+        drawPane.setCursor(Cursor.CROSSHAIR);
+        textFieldPane.setVisible(false);
+    }
+
 
     public void teste2(){
         geometricForm = 6;

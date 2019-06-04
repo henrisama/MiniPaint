@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
+import javafx.scene.control.Menu;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -33,6 +35,8 @@ public class Controller{
     Pane imgColor2;
     @FXML
     TextField textFieldPane;
+    @FXML
+    Menu recentFile;
 
     private int geometricForm = 0;
     private int aux = 0;
@@ -44,6 +48,7 @@ public class Controller{
     private ArrayList<Shape> shapesRebuild = new ArrayList<Shape>();
     int x = 0;
     int y = 0;
+
 
 
 
@@ -80,12 +85,16 @@ public class Controller{
             x = (int) event.getX();
             y = (int) event.getY();
         }
-        else if(event.getX() > 0 && event.getY() > 0 && geometricForm == 6){
+        else if(event.getX() > 20 && event.getY() > 20 && geometricForm == 6){
             Circle circle = new Circle(event.getX() - 11, event.getY() - 11, 10);
             circle.setFill(Color.WHITE);
             shapes.add(circle);
             addDraw();
         }
+    }
+
+    public void insertRecentFile(){
+        fileMenuBar.importRecentFile(recentFile, drawPane);
     }
 
     ///////////////////////////////////////////////////////////////// VBOX - ARQUIVO
@@ -157,6 +166,7 @@ public class Controller{
                 shapes.add(initShape(new Circle(circle2D.getxCentral(), circle2D.getyCentral(), circle2D.getRadius())));
                 break;
             case 4:
+
                 shapes.add(new Text(initPoint.x, initPoint.y, textFieldPane.getText()));
                 break;
             case 5:
@@ -237,9 +247,7 @@ public class Controller{
         cor2 = Color.GRAY;
         imgColor2.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
     }
-    public void setCor2_Pink(){
-        setCor2(Color.PINK);
-    }
+    public void setCor2_Pink(){ setCor2(Color.PINK); }
     public void setCor2_Purple(){
         setCor2(Color.PURPLE);
     }

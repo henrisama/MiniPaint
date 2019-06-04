@@ -2,7 +2,7 @@ package Shapes;
 
 import java.awt.*;
 
-public class Circle2D extends Draw {
+public class Circle2D extends Draw implements setToDraw {
     private double radius;
     private double xCentral;
     private double yCentral;
@@ -41,8 +41,9 @@ public class Circle2D extends Draw {
         this.radius = radius;
     }
 
+
     @Override
-    void setVariableToDraw() {
+    public void setVariableToDraw() {
         if(getFinalPoint().x - getInitPoint().x < getFinalPoint().y - getInitPoint().y){
             setRadius((getFinalPoint().x - getInitPoint().x)/2);
         }

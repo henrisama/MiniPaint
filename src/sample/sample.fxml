@@ -24,7 +24,7 @@
             <items>
               <MenuItem fx:id="fileNewWindow" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Novo" />
                   <MenuItem fx:id="fileOpenImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Abrir" />
-                  <Menu mnemonicParsing="false" text="Arquivos recentes" />
+                  <Menu fx:id="recentFile" mnemonicParsing="false" onAction="#insertRecentFile" text="Arquivos recentes" />
                   <MenuItem fx:id="fileSaveImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Salvar" />
                   <MenuItem fx:id="fileClose" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Fechar" />
             </items>
@@ -129,7 +129,11 @@
                   <String fx:value="btnText" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#teste2" styleClass="btnAll" stylesheets="@style.css" text="Button" />
+            <Button mnemonicParsing="false" onAction="#teste2" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="btnAll" />
+                  <String fx:value="btnEraser" />
+               </styleClass></Button>
          </children>
       </VBox>
    </left>

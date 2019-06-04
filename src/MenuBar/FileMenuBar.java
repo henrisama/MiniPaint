@@ -1,8 +1,12 @@
 package MenuBar;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +17,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.io.*;
 import sample.Main;
 
@@ -50,11 +56,40 @@ public class FileMenuBar {
     private boolean isOverflowRecentFile(){
         try {
             LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(new File("recentFile")));
-            while(lineNumberReader.readLine() != null)
-                ;
+            while(lineNumberReader.readLine() != null);
             if(lineNumberReader.getLineNumber() > 4){ return true; }
         }catch (Exception e){}
         return false;
+    }
+
+    private int checkFile(){
+        try {
+            LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(new File("recentFile")));
+            while(lineNumberReader.readLine() != null);
+            if(lineNumberReader.getLineNumber() > 0){ return lineNumberReader.getLineNumber(); }
+        }catch (Exception e){}
+        return 0;
+    }
+
+    public void importRecentFile(Menu menu, AnchorPane anchorPane){
+        int i = checkFile();
+        if(i > 0){
+            try {
+                File file = new File("recentFile");
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+                menu.getItems().clear();
+                for(; i> 0; i--){
+                    MenuItem menuItem = new MenuItem(bufferedReader.readLine());
+                    menuItem.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            anchorPane.setBackground(new Background(new BackgroundFill(new ImagePattern(new Image(menuItem.getText())), CornerRadii.EMPTY, Insets.EMPTY)));
+                        }
+                    });
+                    menu.getItems().addAll(menuItem);
+                }
+            }catch (Exception e){}
+        }
     }
 
     private void saveRecentFile(File saveFile){

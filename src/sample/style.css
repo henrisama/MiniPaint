@@ -35,6 +35,9 @@
 }
 
 .btnEraser{
+    -fx-background-position: 50%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url('../Images/eraser.png');
 }
 
 .btnAll{

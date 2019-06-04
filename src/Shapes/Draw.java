@@ -45,6 +45,4 @@ abstract class Draw {
             }
         }
     }
-
-    abstract void setVariableToDraw();
 }

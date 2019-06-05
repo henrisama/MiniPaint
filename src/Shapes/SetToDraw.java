@@ -1,5 +1,5 @@
 package Shapes;
 
-public interface setToDraw {
+public interface SetToDraw {
     void setVariableToDraw();
 }

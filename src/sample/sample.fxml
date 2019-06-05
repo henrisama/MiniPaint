@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
@@ -20,11 +21,11 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Arquivo">
+          <Menu mnemonicParsing="false" onShowing="#insertRecentFile" text="Arquivo">
             <items>
               <MenuItem fx:id="fileNewWindow" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Novo" />
                   <MenuItem fx:id="fileOpenImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Abrir" />
-                  <Menu fx:id="recentFile" mnemonicParsing="false" onAction="#insertRecentFile" text="Arquivos recentes" />
+                  <Menu fx:id="recentFile" mnemonicParsing="false" text="Arquivos recentes" />
                   <MenuItem fx:id="fileSaveImage" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Salvar" />
                   <MenuItem fx:id="fileClose" mnemonicParsing="false" onAction="#eventFileMenuBar" text="Fechar" />
             </items>
@@ -32,7 +33,8 @@
           <Menu mnemonicParsing="false" text="Editar">
             <items>
               <MenuItem fx:id="drawClear" mnemonicParsing="false" onAction="#eventEditMenuBar" text="Limpar" />
-                  <MenuItem mnemonicParsing="false" text="Desfazer" />
+                  <MenuItem fx:id="undo" mnemonicParsing="false" onAction="#eventEditMenuBar" text="Desfazer                     Crtl+Z" />
+                  <MenuItem fx:id="redo" mnemonicParsing="false" onAction="#eventEditMenuBar" text="Refazer             Ctrl+Shifit+Z" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ajuda">
@@ -46,52 +48,30 @@
    <bottom>
       <Pane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: #848484;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="75.0">
                <children>
-                  <MenuButton mnemonicParsing="false" prefHeight="33.0" stylesheets="@style.css" text="Cor 1" textFill="WHITE">
+                  <MenuButton mnemonicParsing="false" prefHeight="33.0" stylesheets="@style.css" text="Cor" textFill="WHITE">
                       <items>
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor1_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
+                        <MenuItem fx:id="na" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-padding: 5 10;" text="n/a" />
+                          <MenuItem fx:id="yellow" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
+                          <MenuItem fx:id="black" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: black; -fx-padding: 5 20;" />
+                          <MenuItem fx:id="red" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: red; -fx-padding: 5 20;" />
+                          <MenuItem fx:id="green" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: green; -fx-padding: 5 20;" />
+                          <MenuItem fx:id="blue" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: blue; -fx-padding: 5 20;" />
+                          <MenuItem fx:id="gray" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: gray; -fx-padding: 5 20;" />
+                          <MenuItem fx:id="pink" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: pink; -fx-padding: 5 20;" />
+                          <MenuItem fx:id="purple" mnemonicParsing="false" onAction="#setColorEvent" style="-fx-background-color: purple; -fx-padding: 5 20;" />
                       </items>
                      <graphic>
-                        <Pane fx:id="imgColor1" prefHeight="10.0" prefWidth="10.0" />
+                        <Pane fx:id="imgColor" prefHeight="10.0" prefWidth="10.0" />
                      </graphic>
-                     <styleClass>
-                        <String fx:value="btnColor1" />
-                        <String fx:value="btnAll" />
-                     </styleClass>
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
-                  </MenuButton>
-                  <MenuButton mnemonicParsing="false" prefHeight="33.0" stylesheets="@style.css" text="Cor 2" textFill="WHITE">
-                      <items>
-                        <MenuItem mnemonicParsing="false" onAction="#setCor2_na" style="-fx-padding: 5 10;" text="n/a" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Yellow" style="-fx-background-color: yellow; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Black" style="-fx-background-color: black; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_RED" style="-fx-background-color: red; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Green" style="-fx-background-color: green; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Blue" style="-fx-background-color: blue; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Gray" style="-fx-background-color: gray; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Pink" style="-fx-background-color: pink; -fx-padding: 5 20;" />
-                          <MenuItem mnemonicParsing="false" onAction="#setCor2_Purple" style="-fx-background-color: purple; -fx-padding: 5 20;" />
-                      </items>
-                     <graphic>
-                        <Pane fx:id="imgColor2" prefHeight="10.0" prefWidth="10.0" />
-                     </graphic>
                      <styleClass>
-                        <String fx:value="btnColor2" />
+                        <String fx:value="btnColor" />
                         <String fx:value="btnAll" />
                      </styleClass>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
                   </MenuButton>
                </children>
             </HBox>
@@ -99,37 +79,38 @@
                <padding>
                   <Insets bottom="2.0" top="2.0" />
                </padding></TextField>
+            <Label fx:id="statusLabel" alignment="CENTER" layoutX="300.0" prefHeight="33.0" prefWidth="200.0" textAlignment="CENTER" textFill="WHITE" />
          </children></Pane>
    </bottom>
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="75.0" style="-fx-background-color: #D8D8D8;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#selectedDrawing" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
+            <Button fx:id="drawing" mnemonicParsing="false" onAction="#selectedForm" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="btnDrawing" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#straightSelected" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
+            <Button fx:id="line" mnemonicParsing="false" onAction="#selectedForm" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="btnStraight" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#selectedRectangle" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
+            <Button fx:id="rectangle" mnemonicParsing="false" onAction="#selectedForm" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="btnRectangle" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#selectedCircle" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
+            <Button fx:id="circle" mnemonicParsing="false" onAction="#selectedForm" prefHeight="50.0" prefWidth="75.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="btnCircle" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#selectedText" stylesheets="@style.css">
+            <Button fx:id="text" mnemonicParsing="false" onAction="#selectedForm" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="btnText" />
                   <String fx:value="btnAll" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#teste2" stylesheets="@style.css">
+            <Button fx:id="eraser" mnemonicParsing="false" onAction="#selectedForm" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="btnAll" />
                   <String fx:value="btnEraser" />
@@ -138,7 +119,7 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="drawPane" onMouseDragged="#teste" onMousePressed="#onPressed" onMouseReleased="#onReleased" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="drawPane" onMouseDragged="#onDragged" onMousePressed="#onPressed" onMouseReleased="#onReleased" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

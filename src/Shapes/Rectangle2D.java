@@ -2,7 +2,7 @@ package Shapes;
 
 import java.awt.*;
 
-public class Rectangle2D extends Draw implements setToDraw {
+public class Rectangle2D extends Draw implements SetToDraw {
     private double width;
     private double heigth;
 

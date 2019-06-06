@@ -10,7 +10,7 @@ abstract class Draw {
         return initPoint;
     }
 
-    protected    void setInitPoint(Point initPoint) {
+    protected void setInitPoint(Point initPoint) {
         this.initPoint = initPoint;
     }
 
@@ -21,7 +21,5 @@ abstract class Draw {
     protected void setFinalPoint(Point finalPoint) {
         this.finalPoint = finalPoint;
     }
-
-
 
 }

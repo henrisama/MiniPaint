@@ -10,7 +10,7 @@ abstract class Draw {
         return initPoint;
     }
 
-    protected void setInitPoint(Point initPoint) {
+    protected    void setInitPoint(Point initPoint) {
         this.initPoint = initPoint;
     }
 
@@ -23,26 +23,5 @@ abstract class Draw {
     }
 
 
-    void setPoint(Point initPoint, Point finalPoint){
-        if(initPoint.x > finalPoint.x && initPoint.y > finalPoint.y){
-            setInitPoint(finalPoint.getLocation());
-            setFinalPoint(initPoint.getLocation());
-        }
-        else if(initPoint.x < finalPoint.x && initPoint.y < finalPoint.y){
-            setInitPoint(initPoint.getLocation());
-            setFinalPoint(finalPoint.getLocation());
-        }
-        else{
-            Point point1 = new Point((int) initPoint.getX(), (int) finalPoint.getY());
-            Point point2 = new Point((int) finalPoint.getX(), (int) initPoint.getY());
-            if(initPoint.x < finalPoint.x && initPoint.y > finalPoint.y){
-                setInitPoint(point1.getLocation());
-                setFinalPoint(point2.getLocation());
-            }
-            else if(initPoint.x > finalPoint.x && initPoint.y < finalPoint.y){
-                setInitPoint(point2.getLocation());
-                setFinalPoint(point1.getLocation());
-            }
-        }
-    }
+
 }
